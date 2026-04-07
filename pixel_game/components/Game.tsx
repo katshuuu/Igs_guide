@@ -1156,16 +1156,21 @@ export default function Game() {
 
       {/* Questionnaire Screen */}
       {gameState === "questionnaire" && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-b from-indigo-900 via-purple-900 to-slate-900 p-4 animate-in fade-in duration-500">
+        <div
+          className="absolute inset-0 flex flex-col items-center justify-center bg-cover bg-center bg-no-repeat p-4 animate-in fade-in duration-500"
+          style={{
+            backgroundImage:
+              "linear-gradient(to bottom, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.62)), linear-gradient(to bottom, rgba(15, 23, 42, 0.72), rgba(30, 27, 75, 0.82)), url(/gta.jpg)",
+          }}
+        >
           <div className="max-w-lg w-full">
             <h1 
-              className="text-3xl md:text-4xl font-bold text-amber-300 text-center mb-2 animate-in slide-in-from-top duration-500"
-              style={{ textShadow: "3px 3px 0 #000" }}
+              className="text-[2.25rem] sm:text-[2.8125rem] md:text-[2.8125rem] font-bold text-center mb-2 animate-in slide-in-from-top duration-500 bg-gradient-to-r from-amber-200 via-yellow-300 to-orange-400 bg-clip-text text-transparent drop-shadow-[0.06em_0.06em_0_rgb(0,0,0)]"
             >
               СТРАХОВОЕ ПРИКЛЮЧЕНИЕ
             </h1>
             <p 
-              className="text-lg text-purple-200 text-center mb-8"
+              className="text-sm sm:text-base text-purple-200 text-center mb-6"
             >
               Давай познакомимся! Ответь на несколько вопросов.
             </p>
@@ -1186,11 +1191,11 @@ export default function Game() {
               ))}
             </div>
 
-            <div className="bg-slate-800/90 border-4 border-purple-500 rounded-2xl p-6 md:p-8 animate-in zoom-in-95 duration-300">
+            <div className="bg-slate-800/90 border-4 border-purple-500 rounded-2xl p-4 md:p-6 animate-in zoom-in-95 duration-300">
               {/* Question 1: Name */}
               {questionStep === 0 && (
                 <div className="space-y-6">
-                  <h2 className="text-2xl font-bold text-white text-center" >
+                  <h2 className="text-lg sm:text-xl font-bold text-white text-center" >
                     Как тебя зовут?
                   </h2>
                   <input
@@ -1198,13 +1203,13 @@ export default function Game() {
                     value={userAnswers.name}
                     onChange={(e) => setUserAnswers(prev => ({ ...prev, name: e.target.value }))}
                     placeholder="Введи своё имя"
-                    className="w-full p-4 bg-slate-700 border-2 border-purple-400 rounded-xl text-white text-lg focus:outline-none focus:border-amber-400 transition-colors"
+                    className="w-full p-3 bg-slate-700 border-2 border-purple-400 rounded-xl text-white text-sm sm:text-base focus:outline-none focus:border-amber-400 transition-colors"
                     autoFocus
                   />
                   <button
                     onClick={handleQuestionnaireNext}
                     disabled={!userAnswers.name.trim()}
-                    className={`w-full py-4 rounded-xl font-bold text-lg transition-all duration-200 ${
+                    className={`w-full py-3 rounded-xl font-bold text-sm sm:text-base transition-all duration-200 ${
                       userAnswers.name.trim() 
                         ? "bg-amber-500 hover:bg-amber-400 text-black" 
                         : "bg-gray-600 text-gray-400 cursor-not-allowed"
@@ -1218,7 +1223,7 @@ export default function Game() {
               {/* Question 2: Favorite Subject */}
               {questionStep === 1 && (
                 <div className="space-y-6">
-                  <h2 className="text-2xl font-bold text-white text-center" >
+                  <h2 className="text-lg sm:text-xl font-bold text-white text-center" >
                     Какой школьный предмет ты любишь больше всего?
                   </h2>
                   <input
@@ -1226,13 +1231,13 @@ export default function Game() {
                     value={userAnswers.favoriteSubject}
                     onChange={(e) => setUserAnswers(prev => ({ ...prev, favoriteSubject: e.target.value }))}
                     placeholder="Например: математика, физика, история..."
-                    className="w-full p-4 bg-slate-700 border-2 border-purple-400 rounded-xl text-white text-lg focus:outline-none focus:border-amber-400 transition-colors"
+                    className="w-full p-3 bg-slate-700 border-2 border-purple-400 rounded-xl text-white text-sm sm:text-base focus:outline-none focus:border-amber-400 transition-colors"
                     autoFocus
                   />
                   <button
                     onClick={handleQuestionnaireNext}
                     disabled={!userAnswers.favoriteSubject.trim()}
-                    className={`w-full py-4 rounded-xl font-bold text-lg transition-all duration-200 ${
+                    className={`w-full py-3 rounded-xl font-bold text-sm sm:text-base transition-all duration-200 ${
                       userAnswers.favoriteSubject.trim() 
                         ? "bg-amber-500 hover:bg-amber-400 text-black" 
                         : "bg-gray-600 text-gray-400 cursor-not-allowed"
@@ -1246,10 +1251,10 @@ export default function Game() {
               {/* Question 3: Device */}
               {questionStep === 2 && (
                 <div className="space-y-6">
-                  <h2 className="text-2xl font-bold text-white text-center" >
+                  <h2 className="text-lg sm:text-xl font-bold text-white text-center" >
                     С какого устройства ты сейчас играешь?
                   </h2>
-                  <p className="text-purple-300 text-center text-sm" >
+                  <p className="text-purple-300 text-center text-xs sm:text-sm" >
                     Будет отлично, если напишешь модель устройства
                   </p>
                   <input
@@ -1257,13 +1262,13 @@ export default function Game() {
                     value={userAnswers.device}
                     onChange={(e) => setUserAnswers(prev => ({ ...prev, device: e.target.value }))}
                     placeholder="Например: iPhone 15, Samsung Galaxy, ноутбук..."
-                    className="w-full p-4 bg-slate-700 border-2 border-purple-400 rounded-xl text-white text-lg focus:outline-none focus:border-amber-400 transition-colors"
+                    className="w-full p-3 bg-slate-700 border-2 border-purple-400 rounded-xl text-white text-sm sm:text-base focus:outline-none focus:border-amber-400 transition-colors"
                     autoFocus
                   />
                   <button
                     onClick={handleQuestionnaireNext}
                     disabled={!userAnswers.device.trim()}
-                    className={`w-full py-4 rounded-xl font-bold text-lg transition-all duration-200 ${
+                    className={`w-full py-3 rounded-xl font-bold text-sm sm:text-base transition-all duration-200 ${
                       userAnswers.device.trim() 
                         ? "bg-amber-500 hover:bg-amber-400 text-black" 
                         : "bg-gray-600 text-gray-400 cursor-not-allowed"
@@ -1277,7 +1282,7 @@ export default function Game() {
               {/* Question 4: Anxiety */}
               {questionStep === 3 && (
                 <div className="space-y-6">
-                  <h2 className="text-2xl font-bold text-white text-center" >
+                  <h2 className="text-lg sm:text-xl font-bold text-white text-center" >
                     Что вызывает большую тревогу?
                   </h2>
                   <div className="space-y-3">
@@ -1285,7 +1290,7 @@ export default function Game() {
                       <button
                         key={option.value}
                         onClick={() => setUserAnswers(prev => ({ ...prev, anxiety: option.value }))}
-                        className={`w-full p-4 rounded-xl font-medium text-left transition-all duration-200 ${
+                        className={`w-full p-3 rounded-xl font-medium text-left text-sm sm:text-base transition-all duration-200 ${
                           userAnswers.anxiety === option.value
                             ? "bg-amber-500 text-black border-2 border-amber-300"
                             : "bg-slate-700 text-white border-2 border-slate-500 hover:border-purple-400"
@@ -1297,7 +1302,7 @@ export default function Game() {
                   </div>
                   <button
                     onClick={handleQuestionnaireNext}
-                    className="w-full py-4 bg-amber-500 hover:bg-amber-400 text-black rounded-xl font-bold text-lg transition-all duration-200"
+                    className="w-full py-3 bg-amber-500 hover:bg-amber-400 text-black rounded-xl font-bold text-sm sm:text-base transition-all duration-200"
                   >
                     ДАЛЕЕ
                   </button>
@@ -1307,10 +1312,10 @@ export default function Game() {
               {/* Question 5: Pet */}
               {questionStep === 4 && (
                 <div className="space-y-6">
-                  <h2 className="text-2xl font-bold text-white text-center" >
+                  <h2 className="text-lg sm:text-xl font-bold text-white text-center" >
                     Назови имя домашнего питомца
                   </h2>
-                  <p className="text-purple-300 text-center text-sm" >
+                  <p className="text-purple-300 text-center text-xs sm:text-sm" >
                     Если питомца нет — оставь поле пустым
                   </p>
                   <input
@@ -1318,12 +1323,12 @@ export default function Game() {
                     value={userAnswers.petName}
                     onChange={(e) => setUserAnswers(prev => ({ ...prev, petName: e.target.value }))}
                     placeholder="Имя питомца (необязательно)"
-                    className="w-full p-4 bg-slate-700 border-2 border-purple-400 rounded-xl text-white text-lg focus:outline-none focus:border-amber-400 transition-colors"
+                    className="w-full p-3 bg-slate-700 border-2 border-purple-400 rounded-xl text-white text-sm sm:text-base focus:outline-none focus:border-amber-400 transition-colors"
                     autoFocus
                   />
                   <button
                     onClick={handleQuestionnaireNext}
-                    className="w-full py-4 bg-green-500 hover:bg-green-400 text-black rounded-xl font-bold text-lg transition-all duration-200"
+                    className="w-full py-3 bg-green-500 hover:bg-green-400 text-black rounded-xl font-bold text-sm sm:text-base transition-all duration-200"
                   >
                     НАЧАТЬ ИГРУ
                   </button>

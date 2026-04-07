@@ -1,19 +1,16 @@
 "use client";
-
 import { motion, useInView } from "framer-motion";
-import { Rubik_Glitch } from "next/font/google";
+import { Press_Start_2P } from "next/font/google";
 import { useRef } from "react";
 import { MOTIVATION_SECTION_BG } from "@/lib/section-colors";
-
-/** Тот же шрифт, что RubikGlitch-Regular.ttf (Google Fonts) */
-const rubikGlitch = Rubik_Glitch({
+const pressStart2P = Press_Start_2P({
   weight: "400",
   subsets: ["latin", "cyrillic"],
 });
-
 interface MotivationSectionProps {
   onStartGuide?: () => void;
 }
+
 
 export function MotivationSection({ onStartGuide }: MotivationSectionProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -72,9 +69,7 @@ export function MotivationSection({ onStartGuide }: MotivationSectionProps) {
 
         {/* Pause text - highlighted */}
         <motion.p
-          className={`${rubikGlitch.className} text-lg sm:text-xl md:text-2xl italic font-normal tracking-wide text-cyan-400 text-center my-12 leading-relaxed`}
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={isInView ? { opacity: 1, scale: 1 } : {}}
+          className={`${pressStart2P.className} text-lg sm:text-xl md:text-2xl not-italic font-normal tracking-wide text-cyan-400 text-center my-12 leading-relaxed`}
           transition={{ duration: 0.8, delay: 2.2 }}
         >
           {pauseText}
