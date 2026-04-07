@@ -1,0 +1,350 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+@font-face {
+  font-family: "Ingo Stem";
+  src: url("https://cdn.ingos.ru/fonts/IngoStem-Light-cut.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Ingo Stem";
+  src: url("https://cdn.ingos.ru/fonts/IngoStem-Regular-cut.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Ingo Stem";
+  src: url("https://cdn.ingos.ru/fonts/IngoStem-Bold-cut.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+:root {
+  /* Ingosstrakh Official Brand Colors - extracted from ingos.ru CSS */
+  
+  /* Surface colors */
+  --surface-body: #F6F6F6;
+  --surface-main: #FFF;
+  --surface-secondary: #F6F6F6;
+  --surface-strong: #D2D2D2;
+  --surface-subdued: #EDEDED;
+  
+  /* Primary colors */
+  --primary-main: #004DE5;
+  --primary-hover: #003CB2;
+  --primary-active: #00359E;
+  --primary-disabled: #99B8F5;
+  --primary-subdued: #F0F4FD;
+  --primary-subdued-hover: #E0EAFC;
+  
+  /* Text colors */
+  --text-main: #0D0D0E;
+  --text-secondary: #6C7080;
+  --text-disabled: #D2D2D2;
+  --text-on-color: #FFF;
+  
+  /* Border colors */
+  --border-main: #D2D2D2;
+  --border-secondary: #EDEDED;
+  --border-tertiary: #F6F6F6;
+  
+  /* Status colors */
+  --success-main: #34C759;
+  --success-hover: #299F47;
+  --success-subdued: #E7F8EB;
+  --warning-main: #FF9F0A;
+  --warning-subdued: #FFF9F0;
+  --danger-main: #FF3B30;
+  --danger-subdued: #FFF3F3;
+  --info-main: #4BA0EA;
+  
+  /* Design tokens mapped to Tailwind */
+  --background: var(--surface-body);
+  --foreground: var(--text-main);
+  --card: var(--surface-main);
+  --card-foreground: var(--text-main);
+  --popover: var(--surface-main);
+  --popover-foreground: var(--text-main);
+  --primary: var(--primary-main);
+  --primary-foreground: var(--text-on-color);
+  --secondary: var(--surface-secondary);
+  --secondary-foreground: var(--text-main);
+  --muted: var(--surface-subdued);
+  --muted-foreground: var(--text-secondary);
+  --accent: var(--primary-subdued);
+  --accent-foreground: var(--primary-main);
+  --destructive: var(--danger-main);
+  --destructive-foreground: var(--text-on-color);
+  --border: var(--border-secondary);
+  --input: var(--surface-main);
+  --ring: var(--primary-main);
+  
+  /* Border radius from ingos.ru */
+  --radius: 1rem;
+  --border-radius-wrapper: 1.5rem;
+  --border-radius-item: 1rem;
+  
+  /* Shadows from ingos.ru */
+  --box-shadow-sm: 0px 2px 4px 0px rgba(17, 17, 26, .03), 0px 4px 8px 0px rgba(17, 17, 26, .03), 0px 12px 16px 0px rgba(17, 17, 26, .03);
+  --box-shadow-md: 0px 4px 8px 0px rgba(17, 17, 26, .05), 0px 8px 24px 0px rgba(17, 17, 26, .05), 0px 16px 32px 0px rgba(17, 17, 26, .05);
+  --box-shadow-lg: 0px 2px 4px 0px rgba(17, 17, 26, .05), 0px 12px 16px 0px rgba(17, 17, 26, .05), 0px 24px 32px 0px rgba(17, 17, 26, .05), 0px 32px 48px 0px rgba(17, 17, 26, .05);
+  
+  /* Sidebar */
+  --sidebar: var(--surface-main);
+  --sidebar-foreground: var(--text-main);
+  --sidebar-primary: var(--primary-main);
+  --sidebar-primary-foreground: var(--text-on-color);
+  --sidebar-accent: var(--surface-secondary);
+  --sidebar-accent-foreground: var(--text-main);
+  --sidebar-border: var(--border-secondary);
+  --sidebar-ring: var(--primary-main);
+  
+  /* Status mapped */
+  --success: var(--success-main);
+  --success-foreground: var(--text-on-color);
+  --warning: var(--warning-main);
+  --warning-foreground: var(--text-main);
+  --info: var(--info-main);
+  --info-foreground: var(--text-on-color);
+
+  /* Chart colors */
+  --chart-1: var(--primary-main);
+  --chart-2: var(--success-main);
+  --chart-3: var(--warning-main);
+  --chart-4: #85529C;
+  --chart-5: var(--danger-main);
+}
+
+.dark {
+  /* Dark theme - based on ingos.ru dark mode */
+  --surface-body: #121214;
+  --surface-main: #1C1C1E;
+  --surface-secondary: #2C2C2E;
+  --surface-strong: #3A3A3C;
+  --surface-subdued: #252527;
+  
+  --primary-main: #4BA0EA;
+  --primary-hover: #3D8AD4;
+  --primary-active: #3080C8;
+  --primary-disabled: #2D5078;
+  --primary-subdued: #1A2A40;
+  --primary-subdued-hover: #223752;
+  
+  --text-main: #F5F5F7;
+  --text-secondary: #98989D;
+  --text-disabled: #48484A;
+  --text-on-color: #FFF;
+  
+  --border-main: #48484A;
+  --border-secondary: #3A3A3C;
+  --border-tertiary: #2C2C2E;
+  
+  --success-main: #30D158;
+  --success-subdued: #0D2818;
+  --warning-main: #FFD60A;
+  --warning-subdued: #3D3200;
+  --danger-main: #FF453A;
+  --danger-subdued: #3D1210;
+  --info-main: #64D2FF;
+  
+  --background: var(--surface-body);
+  --foreground: var(--text-main);
+  --card: var(--surface-main);
+  --card-foreground: var(--text-main);
+  --popover: var(--surface-main);
+  --popover-foreground: var(--text-main);
+  --primary: var(--primary-main);
+  --primary-foreground: var(--text-on-color);
+  --secondary: var(--surface-secondary);
+  --secondary-foreground: var(--text-main);
+  --muted: var(--surface-subdued);
+  --muted-foreground: var(--text-secondary);
+  --accent: var(--primary-subdued);
+  --accent-foreground: var(--primary-main);
+  --destructive: var(--danger-main);
+  --destructive-foreground: var(--text-on-color);
+  --border: var(--border-secondary);
+  --input: var(--surface-secondary);
+  --ring: var(--primary-main);
+  
+  --sidebar: var(--surface-main);
+  --sidebar-foreground: var(--text-main);
+  --sidebar-primary: var(--primary-main);
+  --sidebar-primary-foreground: var(--text-on-color);
+  --sidebar-accent: var(--surface-secondary);
+  --sidebar-accent-foreground: var(--text-main);
+  --sidebar-border: var(--border-secondary);
+  --sidebar-ring: var(--primary-main);
+  
+  --success: var(--success-main);
+  --success-foreground: var(--surface-body);
+  --warning: var(--warning-main);
+  --warning-foreground: var(--surface-body);
+  --info: var(--info-main);
+  --info-foreground: var(--surface-body);
+
+  --chart-1: var(--primary-main);
+  --chart-2: var(--success-main);
+  --chart-3: var(--warning-main);
+  --chart-4: #BF5AF2;
+  --chart-5: var(--danger-main);
+}
+
+@theme inline {
+  --font-sans: "Ingo Stem", var(--font-sans), "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback', monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 8px);
+  --radius-md: calc(var(--radius) - 4px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-size: 0.875rem;
+    line-height: 1.4;
+  }
+}
+
+/* Ingosstrakh component styles */
+.ingos-card {
+  background: var(--surface-main);
+  border-radius: var(--border-radius-wrapper);
+  border: 1px solid var(--border-secondary);
+  box-shadow: var(--box-shadow-sm);
+  transition: box-shadow 0.2s ease;
+}
+
+.ingos-card:hover {
+  box-shadow: var(--box-shadow-md);
+}
+
+.ingos-btn-primary {
+  background: var(--primary-main);
+  color: var(--text-on-color);
+  border-radius: 9999px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.ingos-btn-primary:hover {
+  background: var(--primary-hover);
+}
+
+.ingos-btn-primary:active {
+  background: var(--primary-active);
+}
+
+.ingos-btn-outline {
+  background: transparent;
+  border: 2px solid var(--primary-main);
+  color: var(--primary-main);
+  border-radius: 9999px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.ingos-btn-outline:hover {
+  background: var(--primary-main);
+  color: var(--text-on-color);
+}
+
+.ingos-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.ingos-badge-success {
+  background: var(--success-subdued);
+  color: var(--success-main);
+}
+
+.ingos-badge-warning {
+  background: var(--warning-subdued);
+  color: var(--warning-main);
+}
+
+.ingos-badge-danger {
+  background: var(--danger-subdued);
+  color: var(--danger-main);
+}
+
+.ingos-badge-primary {
+  background: var(--primary-subdued);
+  color: var(--primary-main);
+}
+
+.ingos-input {
+  background: var(--surface-main);
+  border: 1px solid var(--border-secondary);
+  border-radius: var(--border-radius-item);
+  padding: 0.875rem 1rem;
+  color: var(--text-main);
+  transition: border-color 0.2s ease;
+}
+
+.ingos-input:hover,
+.ingos-input:focus {
+  border-color: var(--primary-main);
+  outline: none;
+}
+
+.ingos-input::placeholder {
+  color: var(--text-secondary);
+}
