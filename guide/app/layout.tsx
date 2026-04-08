@@ -2,8 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { ThemeProvider } from '@/components/theme-provider'
-import { IngosHeader } from '@/components/guide/ingos-header'
-import { IngosFooter } from '@/components/guide/ingos-footer'
+import { AppShell } from '@/components/app-shell'
 import './globals.css'
 
 const inter = Inter({ 
@@ -65,11 +64,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="min-h-screen bg-background">
-            <IngosHeader />
-            {children}
-            <IngosFooter />
-          </div>
+          <AppShell>{children}</AppShell>
         </ThemeProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

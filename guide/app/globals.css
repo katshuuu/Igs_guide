@@ -348,3 +348,77 @@
 .ingos-input::placeholder {
   color: var(--text-secondary);
 }
+
+/* Гайд: пастельный фон и аккуратное движение кнопок (шрифт не меняем) */
+.guide-course-root {
+  background: linear-gradient(165deg, #f5f3ff 0%, #ecfdf5 38%, #fff7ed 72%, #faf5ff 100%);
+  background-attachment: fixed;
+}
+
+.guide-course-root main {
+  position: relative;
+}
+
+/* Секции с bg-muted — мягкий пастельный слой вместо серого */
+.guide-course-root section.bg-muted {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.45) 0%,
+    rgba(245, 243, 255, 0.35) 50%,
+    rgba(236, 253, 245, 0.3) 100%
+  ) !important;
+}
+
+.guide-course-root main > section.min-h-\[calc\(100vh-108px\)\] {
+  position: relative;
+}
+
+/* Карточки shadcn внутри гайда — мягкая глубина */
+.guide-course-root .bg-card.rounded-2xl {
+  border-color: rgba(196, 181, 253, 0.35);
+  box-shadow: 0 4px 24px rgba(139, 92, 246, 0.06);
+  transition:
+    box-shadow 0.35s ease,
+    border-color 0.35s ease,
+    transform 0.35s ease;
+}
+
+.guide-course-root .bg-card.rounded-2xl:hover {
+  box-shadow: 0 10px 32px rgba(139, 92, 246, 0.1);
+  border-color: rgba(167, 139, 250, 0.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .guide-course-root button[data-slot="button"],
+  .guide-course-root .bg-card.rounded-2xl {
+    transition: none !important;
+  }
+
+  .guide-course-root button[data-slot="button"]:hover {
+    transform: none !important;
+  }
+}
+
+/* Кнопки (Radix / shadcn) — лёгкий подъём и блик */
+.guide-course-root button[data-slot="button"]:not(:disabled) {
+  transition:
+    transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.32s ease,
+    filter 0.25s ease;
+  will-change: transform;
+}
+
+.guide-course-root button[data-slot="button"]:not(:disabled):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(99, 102, 241, 0.18);
+  filter: saturate(1.05);
+}
+
+.guide-course-root button[data-slot="button"]:not(:disabled):active {
+  transform: translateY(0);
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.12);
+}
+
+.dark .guide-course-root {
+  background: linear-gradient(165deg, #1a1625 0%, #14221f 45%, #231a1a 100%);
+}

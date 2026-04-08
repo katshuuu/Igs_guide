@@ -8359,6 +8359,29 @@
             padding: 40px;
             box-shadow: 0 16px 48px rgba(20, 50, 110, 0.24);
             margin: 24px 0;
+            position: relative;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr);
+            gap: 24px;
+            align-items: center;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 360px;
+            height: 360px;
+            right: -120px;
+            top: -140px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0) 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
         }
 
         .hero-tag {
@@ -8387,15 +8410,69 @@
             font-size: 18px;
         }
 
+        .hero-list li {
+            margin-bottom: 8px;
+        }
+
+        .hero-media {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            gap: 12px;
+        }
+
+        .hero-media-main {
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            box-shadow: 0 12px 26px rgba(8, 28, 70, 0.35);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .hero-media-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
         .btn-hero {
             border: 0;
             border-radius: 999px;
-            background: #ffcc00;
-            color: #1f1400;
+            background: linear-gradient(135deg, #bbe0f8 0%, #cadeee 48%, #67b9ff 100%);
+            color: #03101d;
             font-weight: 700;
             font-size: 20px;
             padding: 14px 28px;
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 24px rgba(80, 157, 230, 0.34);
+            transition: transform .25s ease, box-shadow .35s ease, color .35s ease, background .35s ease;
+        }
+
+        .btn-hero::before {
+            content: "";
+            position: absolute;
+            top: -120%;
+            left: -50%;
+            width: 52%;
+            height: 320%;
+            transform: rotate(18deg);
+            background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, .75) 50%, rgba(255, 255, 255, 0) 100%);
+            pointer-events: none;
+            transition: left .7s ease;
+        }
+
+        .btn-hero:hover {
+            background: linear-gradient(135deg, #65a3ef 0%, #d9d1f9 44%, #84a0d6 100%);
+            color: #081499;
+            box-shadow: 0 14px 34px rgb(157, 122, 183);
+            transform: translateY(-1px);
+        }
+
+        .btn-hero:hover::before {
+            left: 125%;
         }
 
         .section {
@@ -8438,6 +8515,15 @@
         @media (max-width: 960px) {
             .hero-title {
                 font-size: 40px;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 26px 20px;
+            }
+
+            .hero-media-main img {
+                height: 240px;
             }
 
             .cards {
@@ -8486,7 +8572,7 @@
                 <div class="header__scrollable container">
                     <div class="header__nav"><a routerlink="/" class="header__logo-mini" href="/"><svg
                                 xmlns="http://www.w3.org/2000/svg">
-                                <use xlink:href="assets/icons/icon-logo-mini.svg#icon-logo-mini" />
+                                <use xlink:href="#icon-logo-mini" />
                             </svg></a><ingos-desktop-menu class="desktop-menu desktop-menu_hovered desktop-menu_ready">
                             <div class="desktop-menu__item desktop-menu__item_active ng-star-inserted"><a
                                     class="d-flex align-items-center desktop-menu__title ng-star-inserted" href="/">
@@ -9914,32 +10000,39 @@
             </ingos-desktop-header><!----><!---->
     <main class="container">
         <section class="hero">
-          <p class="hero-tag">Для родителей и школьников</p>
-          <h1 class="hero-title">Умный гайд по страхованию</h1>
-          <p class="hero-desc">Практичный интерактивный формат, который поможет быстро разобраться в страховой защите ребенка и выбрать подходящее решение без лишней теории.</p>
-          <ul class="hero-list">
-            <li>Пошаговое объяснение основных страховых сценариев</li>
-            <li>Краткие рекомендации по выбору программы</li>
-            <li>Полезные подсказки перед оформлением</li>
-          </ul>
-          <button class="btn btn-hero">Пройти гайд</button>
+            <div class="hero-content">
+              <p class="hero-tag">Для родителей и школьников</p>
+              <h1 class="hero-title">Умный гайд по страхованию</h1>
+              <p class="hero-desc">Практичный интерактивный формат, который поможет быстро разобраться в страховой защите ребенка и выбрать подходящее решение без лишней теории.</p>
+              <ul class="hero-list">
+                <li>Пошаговое объяснение основных страховых сценариев</li>
+                <li>Краткие рекомендации по выбору программы</li>
+                <li>Полезные подсказки перед оформлением</li>
+              </ul>
+              <button class="btn btn-hero" id="start-guide-btn">Пройти гайд</button>
+            </div>
+            <div class="hero-media" aria-hidden="true">
+              <div class="hero-media-main">
+                <img src="/guide/components/guide/gui.gif" alt="">
+              </div>
+            </div>
         </section>
         <section class="section" id="guide">
-          <h2>Кому понадобится полис</h2>
-          <div class="cards">
-            <article class="card">
-              <h3>Родителям школьников</h3>
-              <p>Если ребенок активен в школе, на переменах и занятиях спортом, страховая защита снижает риски внезапных расходов.</p>
-            </article>
-            <article class="card">
-              <h3>Для секций и кружков</h3>
-              <p>Полезно при регулярных тренировках, соревнованиях и поездках, где вероятность травм выше среднего.</p>
-            </article>
-            <article class="card">
-              <h3>Для спокойствия семьи</h3>
-              <p>Прозрачные условия и понятные шаги действий при страховом случае помогают быстрее получить поддержку.</p>
-            </article>
-          </div>
+            <h2>Кому подойдет этот гайд</h2>
+            <div class="cards">
+              <article class="card">
+                <h3>Родителям школьников</h3>
+                <p>Если хотите быстро понять базовые страховые сценарии для ребенка и не разбираться в сложных терминах.</p>
+              </article>
+              <article class="card">
+                <h3>Для семей с активным графиком</h3>
+                <p>Подойдет, если у ребенка тренировки, секции и поездки, а вам нужна понятная структура рисков и решений.</p>
+              </article>
+              <article class="card">
+                <h3>Для взвешенного выбора</h3>
+                <p>Гайд помогает сравнить варианты защиты и понять, какой формат страхования действительно нужен вашей семье.</p>
+              </article>
+            </div>
         </section>
     </main>
 <ingos-footer class="footer ng-tns-c3440290599-0">
@@ -10335,6 +10428,16 @@
         </ingos-seo></ingos-app>
     <ingo-dropdown></ingo-dropdown>
     <ingo-dialog-host></ingo-dialog-host>
-    <script src="runtime.ca6ef182656934a9.js" type="module"></script>
-    <script src="polyfills.331e96422253c2f3.js" type="module"></script>
-    <script src="main.5a4f8399b397a236.js" type="module"></script>
+    <script>
+      (function () {
+        var startButton = document.getElementById("start-guide-btn");
+        if (!startButton) return;
+
+        startButton.addEventListener("click", function () {
+          var configured = window.GUIDE_COURSE_URL || "";
+          var target = configured || "/guide-app";
+          var url = target.indexOf("http") === 0 ? target : window.location.origin + target;
+          window.open(url, "_blank", "noopener,noreferrer");
+        });
+      })();
+    </script>
